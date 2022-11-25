@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+    let text =`Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+    . Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum`
+    let a = text.slice(0, text.indexOf("XXX")); // find moment where is XXX
+    let arrString = a.split(" "); //  put all in array
+
+    let numbersOfRepeatitions = 0;
+    let arrLength = arrString.length;
+    let howManyA = 0;
+    let howManyS = 0;
+    let howManyQ = 0;
+    let n = 0;
+
+     //check it is string
+     do {
+        if ((typeof arrString[n]) == "string"){
+        n++;
+        }
+    else {delete arrString[n]
+         n++};
+    } while (n <= arrLength - 1);
+
+    console.log("text: ", arrString);
+    console.log("elements in array:", arrLength);
+
+      // words on A
+     do {
+    if ( arrString[numbersOfRepeatitions].indexOf("a",0 ) ==  0 ){
+        console.log(arrString[numbersOfRepeatitions]); // show this string begin on A
+        delete arrString[numbersOfRepeatitions]; 
+        numbersOfRepeatitions++;
+        howManyA++;
+         }   
+    else {numbersOfRepeatitions++};
+    } while (arrLength - 1 >= numbersOfRepeatitions);
+
+   arrString= arrString.filter(String); // shorten array 
+    console.log("Words on a:", howManyA)
+ 
+    // Check words on S
+
+    // Reset my variables
+    numbersOfRepeatitions = 0;
+    arrLength = arrString.length;
+
+    do { 
+        if ( arrString[numbersOfRepeatitions].indexOf("s",0 ) ==  0 ){
+        console.log(arrString[numbersOfRepeatitions])
+        delete arrString[numbersOfRepeatitions];
+        howManyS++;
+        numbersOfRepeatitions++;
+       }
+    else {numbersOfRepeatitions++};
+    } while (arrLength -1 >= numbersOfRepeatitions );
+
+    arrString= arrString.filter(String);
+    console.log("Words on s",howManyS)
+
+    // Check Words for Q
+
+    numbersOfRepeatitions = 0;
+    arrLength = arrString.length;
+    
+   do { 
+    if ( arrString[numbersOfRepeatitions].indexOf("q",0 ) ==  0 ){
+        console.log(arrString[numbersOfRepeatitions])
+        delete arrString[numbersOfRepeatitions];
+        howManyQ++;
+        numbersOfRepeatitions++;
+    }
+    else {numbersOfRepeatitions++};
+    } while (arrLength -1 >= numbersOfRepeatitions );
+
+   arrString= arrString.filter(String);
+    console.log("Words on q",howManyQ)
+
+    console.log("Words on different letter: ",arrString.length)
+
+
+</script>   
+</body>
+</html>
